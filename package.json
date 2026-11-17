@@ -5,6 +5,9 @@
 	"scripts": {
 		"dev:api": "pnpm --filter @app/api dev",
 		"build": "pnpm -r build",
+		"db:generate": "pnpm --filter @app/db db:generate",
+		"db:migrate": "pnpm --filter @app/db db:migrate",
+		"db:sync": "pnpm --filter @app/db db:sync",
 		"test": "pnpm -r test",
 		"typecheck": "pnpm -r typecheck",
 		"lint": "biome check .",
