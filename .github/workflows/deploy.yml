@@ -1,0 +1,32 @@
+# Gerado pelo init-deploy. Cada push na main roda os checks e faz deploy na VPS.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm run build
+
+  deploy:
+    needs: check
+    uses: pedrosawczuk/infra/.github/workflows/deploy-vps.yml@main
+    permissions:
+      contents: read
+      packages: write
+    with:
+      app: shizu-code
+      dockerfile: apps/api/Dockerfile
+    secrets: inherit
