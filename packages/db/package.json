@@ -9,9 +9,10 @@
 	},
 	"scripts": {
 		"db:generate": "drizzle-kit generate",
-		"db:migrate": "drizzle-kit migrate",
+		"db:migrate": "tsx src/migrate.ts",
 		"db:push": "drizzle-kit push",
 		"db:studio": "drizzle-kit studio",
+		"db:sync": "pnpm db:generate && pnpm db:migrate",
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
@@ -24,6 +25,7 @@
 		"@types/node": "^24.19.2",
 		"@types/pg": "^8.23.1",
 		"drizzle-kit": "^0.31.11",
+		"tsx": "^4.23.15",
 		"typescript": "^7.0.2"
 	}
 }
