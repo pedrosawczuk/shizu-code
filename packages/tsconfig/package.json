@@ -1,0 +1,12 @@
+{
+  "name": "@app/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./base.json": "./base.json",
+    "./node.json": "./node.json"
+  },
+  "dependencies": {
+    "@tsconfig/node24": "^24.0.6"
+  }
+}
