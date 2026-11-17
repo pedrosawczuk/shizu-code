@@ -1,0 +1,7 @@
+{
+	"extends": "@app/tsconfig/node.json",
+	"compilerOptions": {
+		"rootDir": "."
+	},
+	"include": ["src", "drizzle.config.ts"]
+}
